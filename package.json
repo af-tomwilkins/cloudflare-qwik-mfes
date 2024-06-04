@@ -1,0 +1,12 @@
+{
+  "name": "cloudflare-qwik-mfes",
+  "version": "0.0.1",
+  "description": "Demo of Cloudflare Qwik MFEs",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "npm-run-all": "4.1.5",
+    "typescript": "5.0.3"
+  }
+}
