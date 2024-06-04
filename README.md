@@ -2,11 +2,11 @@
 
 This repository demonstrates the challenges we are facing using Qwik in a Cloudflare micro-frontend (MFE) architecture.
 
-This is a scaled down version of an application using two MFEs - `main` and `body`. `main` is the entry point, and renders the `body` MFE inside of it.
+This is a scaled down version of an application using two MFEs - `main` and `body`. `main` is the entry point, and renders the `body` MFE inside of it. Upon serving the application, you'll notice dotted borders are used on container elements to clearly show the boundary between MFEs.
 
 The main challenge is around prefetching where multiple Qwik containers are used. Containers emit a `'qprefetch'` `CustomEvent` with filenames for their bundles, and a global listener forwards them to a Service Worker for prefetching. The problem is that the global listener uses `document.currentScript.closest('[q\\:container]')` to resolve the base, which will always resolve to `main`. This architecture works when a single container is used, but when there are multiple containers, each with a unique base, the listener fails to construct the correct URLs for bundles outside of `main`.
 
-This application logs `qprefetch` events to the console, which demonstrates that bundles are emitted without a base. In the HTML, the `prefetch-service-worker` script element shows the global listener, which clearly shows how the base is resolved.
+`body` renders a button to interact with. On click, this will render a new component to demonstrate lazy loading (and the lack of prefetching). All `qprefetch` events are logged to the console, which demonstrates that bundles are emitted without a base. In the HTML, the `prefetch-service-worker` script element shows the global listener, which clearly shows how the base is resolved.
 
 In creating this reproduction another bug has been spotted with the Service Worker itself.
 
