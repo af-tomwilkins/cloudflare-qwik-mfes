@@ -1,0 +1,28 @@
+name = "main"
+compatibility_date = "2022-07-25"
+compatibility_flags = [
+    "streams_enable_constructors",
+    "transformstream_enable_standard_constructor",
+]
+# The client code is generated in the `dist` directory.
+# We use the `assets` config to supply these static files as needed.
+assets = "./dist"
+# The SSR code is generated in the `server` directory.
+main = "server/entry.ssr.js"
+logpush = true
+
+[[services]]
+binding = "body"
+service = "body"
+
+[[services]]
+binding = "main"
+service = "main"
+
+[build]
+command = "npm run build"
+watch_dir = "./src"
+
+# Fixed ports for more stable local dev
+[dev]
+port = 8080
