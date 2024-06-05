@@ -43,4 +43,4 @@ Both MFEs need to be served to view the full application.
 1. Open a terminal in the `/packages/body` directory, and run `npm start`.
 
 `main` will serve on [localhost:8080](http://localhost:8080), you can view the full application from here.
-`body` will serve inside `main`, but can be viewed in isolation on [localhost:8080](http://localhost:8090).
+`body` will serve inside `main`, but can be viewed in isolation on [localhost:8090](http://localhost:8090).
