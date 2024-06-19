@@ -15,6 +15,10 @@ export default {
       return asset;
     }
 
+    if (new URL(request.url).pathname.endsWith(".js")) {
+      return new Response(null, { status: 404 });
+    }
+
     const { writable, readable } = new TransformStream();
     const response = new Response(readable, {
       headers: {
